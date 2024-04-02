@@ -18,7 +18,7 @@ public class JSONManagerServer {
     private UUID uuid;
 
     public JSONManagerServer(){
-        try (FileReader reader = new FileReader("Clients.json"))
+        try (FileReader reader = new FileReader("Products.json"))
         {
             //Read JSON file
             Object obj = jsonParser.parse(reader);

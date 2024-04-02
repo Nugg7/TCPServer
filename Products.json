@@ -1,3 +1,22 @@
 {
-
+  "products":[
+    {
+      "name": "BMX",
+      "HighestBidder": "",
+      "HighestBidderUUID": "",
+      "Bid": 0
+    },
+    {
+      "name": "Table",
+      "HighestBidder": "",
+      "HighestBidderUUID": "",
+      "Bid": 0
+    },
+    {
+      "name": "Sword",
+      "HighestBidder": "",
+      "HighestBidderUUID": "",
+      "Bid": 0
+    }
+  ]
 }

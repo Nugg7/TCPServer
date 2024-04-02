@@ -30,7 +30,7 @@ public class ClientHandler implements Runnable {
                 if (message.get("message").equals("")){ //if it's the first connection of the client the message will be empty and the server will save the client in the JSON file
                     clientUsername = (String) message.get("username");
                     clientUuid = UUID.fromString((String) message.get("UUID"));
-                    System.out.println("connected : " + clientUsername + "\nUUID : " + clientUuid);
+                    System.out.println("connected : " + clientUsername + "\nUUID : " + clientUuid); //should be the code to save the client in the JSON file
                 }
                 else{
                     System.out.println("Received: " + message); //prints out the message of the client
