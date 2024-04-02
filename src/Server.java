@@ -7,7 +7,7 @@ import java.net.Socket;
 
 
 public class Server {
-    static int portNumber = 1234; // port number of the server
+    static int portNumber = 25565; // port number of the server
 
     public static void main(String[] args) {
 
