@@ -16,6 +16,9 @@ public class ClientHandler implements Runnable {
     protected BufferedReader reader;
     protected BufferedWriter writer;
     private JSONManagerServer json = new JSONManagerServer();
+    private JSONObject response = new JSONObject();
+
+    public static String leftMessageConv;
 
     public ClientHandler(Socket clientSocket) {
         this.clientSocket = clientSocket;
@@ -28,8 +31,14 @@ public class ClientHandler implements Runnable {
             profile = json.parse(profileToParse);
             clientUsername = (String)profile.get("username");
             clientUuid = UUID.fromString((String)profile.get("UUID"));
-            System.out.println("SERVER : " + clientUsername + " JOINED");
-            broadcastMessage("SERVER : " + clientUsername + " JOINED");
+            setLeftMessage(clientUsername);
+            JSONObject joinMessage = new JSONObject();
+            joinMessage.put("CODE", "MESSAGE");
+            joinMessage.put("MESSAGE", "SERVER : " + clientUsername + " JOINED");
+            String joinMessageConv = joinMessage.toString();
+            System.out.println(joinMessageConv);
+            broadcastMessage(joinMessageConv);
+            responseClear(joinMessage);
             clients.add(this);
         } catch (IOException e) {
             System.out.println("error at clientHandler constructor");
@@ -51,32 +60,48 @@ public class ClientHandler implements Runnable {
                 }catch (ParseException e){
                     System.out.println("error parsing");
                 }
-                if (!(message.get("message").equals(""))){ //checks if its a first connection
+                if (!(message.get("message").equals(""))){ //checks if it's a first connection
                     String msg = message.get("username") + ": " + message.get("message");
-                    broadcastMessage(msg); //broadcasts the message of the client to all the other clients
-                    System.out.println(msg); //prints out the message of the client
+                    response.put("CODE", "MESSAGE");
+                    response.put("MESSAGE", msg);
+                    String JSONMessage = response.toJSONString();
+                    broadcastMessage(JSONMessage); //broadcasts the message of the client to all the other clients
+                    System.out.println(JSONMessage); //prints out the message of the client
+                    responseClear(response);
                 }
             }
-            System.out.println("SERVER : " + clientUsername + " LEFT"); //prints out when client exits
+            System.out.println(leftMessageConv); //prints out when client exits
             try {
                 if (clientSocket.isConnected()) {
-                    broadcastMessage("SERVER : " + clientUsername + " LEFT"); //broadcasts the message of the client to all the other clients
+                    broadcastMessage(leftMessageConv); //broadcasts the message of the client to all the other clients
                 }
             } catch (Exception e) {
-                System.out.println("SERVER : " + clientUsername + " LEFT"); //prints out when client exits
+                System.out.println(leftMessageConv);//prints out when client exits
             }
         } catch (IOException e) {
             try {
                 if (clientSocket.isConnected()) {
-                    broadcastMessage("SERVER : " + clientUsername + " LEFT"); //broadcasts the message of the client to all the other clients
+                    broadcastMessage(leftMessageConv); //broadcasts the message of the client to all the other clients
                 }
             } catch (Exception o) {
-                System.out.println("SERVER : " + clientUsername + " LEFT"); //prints out when client exits
+                System.out.println(leftMessageConv); //prints out when client exits
             }
-            System.out.println("SERVER : " + clientUsername + " LEFT"); //prints out when client exits
+            System.out.println(leftMessageConv); //prints out when client exits
             //e.printStackTrace();
         }
     }
+
+    public void setLeftMessage(String userName){
+        JSONObject leftMessage = new JSONObject();
+        leftMessage.put("CODE", "MESSAGE");
+        leftMessage.put("MESSAGE", "SERVER : " + userName + " LEFT");
+        leftMessageConv = leftMessage.toString();
+    }
+    
+    public void responseClear(JSONObject response){
+        response.remove("CODE");
+            response.remove("MESSAGE");
+    } 
 
     public void broadcastMessage(String message) {
         for(ClientHandler client : clients){
