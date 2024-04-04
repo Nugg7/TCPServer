@@ -110,7 +110,6 @@ public class ClientHandler implements Runnable {
                     client.writer.newLine();
                     client.writer.flush();
                 } catch (IOException e) {
-                    System.out.println("socket is closed");
                 }
         }
     }
