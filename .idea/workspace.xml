@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d27aac8c-e78b-4585-a331-3b81777cad94" name="Changes" comment="deleted Clients.json made quality of life modifications">
+    <list default="true" id="d27aac8c-e78b-4585-a331-3b81777cad94" name="Changes" comment="changed the port number because 1234 and 4444 don't work anymore apparently">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +34,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Main.executor": "Run",
-    "Application.Server.executor": "Debug",
+    "Application.Server.executor": "Run",
     "Application.Unnamed.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -92,7 +91,8 @@
       <workItem from="1712061820237" duration="4225000" />
       <workItem from="1712067265225" duration="15666000" />
       <workItem from="1712086070692" duration="3479000" />
-      <workItem from="1712089619670" duration="1650000" />
+      <workItem from="1712089619670" duration="3519000" />
+      <workItem from="1712242552613" duration="8584000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -126,7 +126,23 @@
       <option name="project" value="LOCAL" />
       <updated>1712071514930</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="added methods for broadcasting messages, changed PrintWriter to BufferedWriter, moved of BufferedReader and BufferedWriter into constructor and added ArrayList of ClientHandlers for the broadcast of messages">
+      <option name="closed" value="true" />
+      <created>1712091807371</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1712091807371</updated>
+    </task>
+    <task id="LOCAL-00006" summary="changed the port number because 1234 and 4444 don't work anymore apparently">
+      <option name="closed" value="true" />
+      <created>1712091836414</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1712091836414</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,6 +153,8 @@
     <MESSAGE value="added comments to explain code" />
     <MESSAGE value="added json file for products to add to the auction" />
     <MESSAGE value="deleted Clients.json made quality of life modifications" />
-    <option name="LAST_COMMIT_MESSAGE" value="deleted Clients.json made quality of life modifications" />
+    <MESSAGE value="added methods for broadcasting messages, changed PrintWriter to BufferedWriter, moved of BufferedReader and BufferedWriter into constructor and added ArrayList of ClientHandlers for the broadcast of messages" />
+    <MESSAGE value="changed the port number because 1234 and 4444 don't work anymore apparently" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed the port number because 1234 and 4444 don't work anymore apparently" />
   </component>
 </project>
