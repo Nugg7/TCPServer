@@ -7,7 +7,8 @@ import java.net.Socket;
 
 
 public class Server {
-    static int portNumber = 25565; // port number of the server
+    static int portNumber = 1234; // port number of the server
+    static Socket clientSocket;
 
     public static void main(String[] args) {
 
@@ -17,7 +18,7 @@ public class Server {
             serverSocket = new ServerSocket(portNumber); //creates server socket with the port number specified
             System.out.println("Server started!");
             while (true) {
-                Socket clientSocket = serverSocket.accept(); //accepts client conntection from server socket
+                clientSocket = serverSocket.accept(); //accepts client conntection from server socket
                 System.out.println("Accepted connection from: " + clientSocket.getInetAddress().getHostAddress()); //prints ip of the client which connected
                 ClientHandler clientHandler = new ClientHandler(clientSocket); //creates client handler
                 Thread thread = new Thread(clientHandler); //creates thread for the client that connected
