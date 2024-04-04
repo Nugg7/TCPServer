@@ -60,14 +60,21 @@ public class ClientHandler implements Runnable {
                 }catch (ParseException e){
                     System.out.println("error parsing");
                 }
-                if (!(message.get("message").equals(""))){ //checks if it's a first connection
+                if (!(message.get("message").equals("")) && message.get(("message")) != null){ //checks if it's a first connection
                     String msg = message.get("username") + ": " + message.get("message");
-                    response.put("CODE", "MESSAGE");
-                    response.put("MESSAGE", msg);
-                    String JSONMessage = response.toJSONString();
-                    broadcastMessage(JSONMessage); //broadcasts the message of the client to all the other clients
-                    System.out.println(JSONMessage); //prints out the message of the client
-                    responseClear(response);
+                    System.out.println(msg);
+                    try {
+                        double bid = Double.parseDouble(message.get("message").toString());
+                        String JSONMessage = setResponse("BID", msg + "$");
+                        broadcastMessage(JSONMessage); //broadcasts the bid of the client to all the other clients
+                        System.out.println(JSONMessage); //prints out the bid of the client
+                        responseClear(response);
+                    } catch (Exception e) {
+                        String JSONMessage = setResponse("MESSAGE", msg);
+                        broadcastMessage(JSONMessage); //broadcasts the message of the client to all the other clients
+                        System.out.println(JSONMessage); //prints out the message of the client
+                        responseClear(response);
+                    }
                 }
             }
             System.out.println(leftMessageConv); //prints out when client exits
@@ -101,7 +108,13 @@ public class ClientHandler implements Runnable {
     public void responseClear(JSONObject response){
         response.remove("CODE");
             response.remove("MESSAGE");
-    } 
+    }
+
+    public String setResponse(String CODE,String MESSAGE){
+        response.put("CODE", CODE);
+        response.put("MESSAGE", MESSAGE);
+        return response.toJSONString();
+    }
 
     public void broadcastMessage(String message) {
         for(ClientHandler client : clients){
