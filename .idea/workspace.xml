@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d27aac8c-e78b-4585-a331-3b81777cad94" name="Changes" comment="boh" />
+    <list default="true" id="d27aac8c-e78b-4585-a331-3b81777cad94" name="Changes" comment="deleted Clients.json made quality of life modifications">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientHandler.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,30 +31,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Application.Server.executor": "Run",
-    "Application.Unnamed.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/nuggs/IdeaProjects/Reti/TCPServer",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "/home/nuggs/IdeaProjects/Reti/TCPServer/src/Main.java",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Server.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/nuggs/IdeaProjects/Reti/TCPServer&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/home/nuggs/IdeaProjects/Reti/TCPServer/src/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -88,8 +91,7 @@
       <workItem from="1712061820237" duration="4225000" />
       <workItem from="1712067265225" duration="15666000" />
       <workItem from="1712086070692" duration="3479000" />
-      <workItem from="1712089619670" duration="3519000" />
-      <workItem from="1712242552613" duration="9330000" />
+      <workItem from="1712089619670" duration="1650000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -123,39 +125,7 @@
       <option name="project" value="LOCAL" />
       <updated>1712071514930</updated>
     </task>
-    <task id="LOCAL-00005" summary="added methods for broadcasting messages, changed PrintWriter to BufferedWriter, moved of BufferedReader and BufferedWriter into constructor and added ArrayList of ClientHandlers for the broadcast of messages">
-      <option name="closed" value="true" />
-      <created>1712091807371</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1712091807371</updated>
-    </task>
-    <task id="LOCAL-00006" summary="changed the port number because 1234 and 4444 don't work anymore apparently">
-      <option name="closed" value="true" />
-      <created>1712091836414</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1712091836414</updated>
-    </task>
-    <task id="LOCAL-00007" summary="added bid option when replying to client and added function setResponse for ease to create the string to send to client">
-      <option name="closed" value="true" />
-      <created>1712266470744</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1712266470744</updated>
-    </task>
-    <task id="LOCAL-00008" summary="boh">
-      <option name="closed" value="true" />
-      <created>1712266491681</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1712266491681</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,10 +136,6 @@
     <MESSAGE value="added comments to explain code" />
     <MESSAGE value="added json file for products to add to the auction" />
     <MESSAGE value="deleted Clients.json made quality of life modifications" />
-    <MESSAGE value="added methods for broadcasting messages, changed PrintWriter to BufferedWriter, moved of BufferedReader and BufferedWriter into constructor and added ArrayList of ClientHandlers for the broadcast of messages" />
-    <MESSAGE value="changed the port number because 1234 and 4444 don't work anymore apparently" />
-    <MESSAGE value="added bid option when replying to client and added function setResponse for ease to create the string to send to client" />
-    <MESSAGE value="boh" />
-    <option name="LAST_COMMIT_MESSAGE" value="boh" />
+    <option name="LAST_COMMIT_MESSAGE" value="deleted Clients.json made quality of life modifications" />
   </component>
 </project>

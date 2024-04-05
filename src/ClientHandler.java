@@ -62,6 +62,7 @@ public class ClientHandler implements Runnable {
                 }
                 if (!(message.get("message").equals("")) && message.get(("message")) != null){ //checks if it's a first connection
                     String msg = message.get("username") + ": " + message.get("message");
+                    System.out.println(message);
                     System.out.println(msg);
                     try {
                         double bid = Double.parseDouble(message.get("message").toString());
@@ -127,6 +128,10 @@ public class ClientHandler implements Runnable {
         }
     }
 
+
+    // add ban message type to ban any client
+    // add search for client method to send that client ban message
+    // add ban method
 
     @Override
     public void run() {
