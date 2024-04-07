@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d27aac8c-e78b-4585-a331-3b81777cad94" name="Changes" comment="changed TODOs">
+    <list default="true" id="d27aac8c-e78b-4585-a331-3b81777cad94" name="Changes" comment="added methods to close socket when ADMIN starts auction">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Products.json" beforeDir="false" afterPath="$PROJECT_DIR$/Products.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +92,7 @@
       <workItem from="1712086070692" duration="3479000" />
       <workItem from="1712089619670" duration="1650000" />
       <workItem from="1712422491600" duration="4288000" />
-      <workItem from="1712482522199" duration="10354000" />
+      <workItem from="1712482522199" duration="11685000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -153,7 +150,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712514396200</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="added methods to close socket when ADMIN starts auction">
+      <option name="closed" value="true" />
+      <created>1712521958166</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1712521958166</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,6 +172,7 @@
     <MESSAGE value="boh" />
     <MESSAGE value="added all functions to set products received by ADMIN" />
     <MESSAGE value="changed TODOs" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed TODOs" />
+    <MESSAGE value="added methods to close socket when ADMIN starts auction" />
+    <option name="LAST_COMMIT_MESSAGE" value="added methods to close socket when ADMIN starts auction" />
   </component>
 </project>
