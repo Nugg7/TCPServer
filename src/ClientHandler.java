@@ -9,6 +9,14 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.UUID;
 
+/**
+ * TODO:
+ *     // add ban message type to ban any client
+ *     // add search for client method to send that client ban message
+ *     // add ban method
+ *     // add auction class to make methods for auction operations
+ */
+
 public class ClientHandler implements Runnable {
     public static ArrayList<ClientHandler> clients = new ArrayList<ClientHandler>();
     private Socket clientSocket;
@@ -138,11 +146,6 @@ public class ClientHandler implements Runnable {
                 }
         }
     }
-
-
-    // add ban message type to ban any client
-    // add search for client method to send that client ban message
-    // add ban method
 
     @Override
     public void run() {
