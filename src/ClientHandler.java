@@ -85,6 +85,7 @@ public class ClientHandler implements Runnable {
                             product.put("HighestBidderUUID", "");
                             product.put("Bid", 0);
                             json.putProducts(product);
+                            responseClear(response);
                         }
                         else{
                         String JSONMessage = setResponse("MESSAGE", msg);
@@ -97,6 +98,7 @@ public class ClientHandler implements Runnable {
                     Server.refuseConnection();
                 }
             }
+            setLeftMessage(this.clientUsername);
             System.out.println(leftMessageConv); //prints out when client exits
             try {
                 if (clientSocket.isConnected()) {
