@@ -50,11 +50,9 @@ public class ClientHandler implements Runnable {
             responseClear(joinMessage);
             clients.add(this);
         } catch (IOException e) {
-            System.out.println("error at clientHandler constructor");
-            throw new RuntimeException(e);
+            System.out.println("ERROR: socket is closed");
         } catch (ParseException e){
             System.out.println("error at clientHandler constructor - parser");
-            throw new RuntimeException(e);
         }
     }
 
@@ -69,7 +67,7 @@ public class ClientHandler implements Runnable {
                 }catch (ParseException e){
                     System.out.println("error parsing");
                 }
-                if (!(message.get("message").equals("")) && message.get(("message")) != null){ //checks if it's a first connection
+                if (!(message.get("message").equals("")) && message.get(("message")) != null && !(message.get("message").equals("/START"))){ //checks if it's a first connection
                     String msg = message.get("username") + ": " + message.get("message");
                     System.out.println(message);
                     System.out.println(msg);
@@ -95,6 +93,8 @@ public class ClientHandler implements Runnable {
                         responseClear(response);
                         }
                     }
+                } else if (message.get("message").equals("/START")) {
+                    Server.refuseConnection();
                 }
             }
             System.out.println(leftMessageConv); //prints out when client exits
