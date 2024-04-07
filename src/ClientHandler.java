@@ -1,3 +1,4 @@
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
@@ -71,10 +72,20 @@ public class ClientHandler implements Runnable {
                         System.out.println(JSONMessage); //prints out the bid of the client
                         responseClear(response);
                     } catch (Exception e) {
+                        if (message.get("username").equals("PRODUCT")){
+                            JSONObject product = new JSONObject();
+                            product.put("name", message.get("message"));
+                            product.put("HighestBidder", "");
+                            product.put("HighestBidderUUID", "");
+                            product.put("Bid", 0);
+                            json.putProducts(product);
+                        }
+                        else{
                         String JSONMessage = setResponse("MESSAGE", msg);
                         broadcastMessage(JSONMessage); //broadcasts the message of the client to all the other clients
                         System.out.println(JSONMessage); //prints out the message of the client
                         responseClear(response);
+                        }
                     }
                 }
             }

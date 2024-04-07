@@ -10,6 +10,8 @@ public class Server {
     static int portNumber = 1234; // port number of the server
     static Socket clientSocket;
 
+    private static JSONManagerServer json = new JSONManagerServer();
+
     public static void main(String[] args) {
 
         ServerSocket serverSocket = null;
@@ -17,6 +19,7 @@ public class Server {
         try {
             serverSocket = new ServerSocket(portNumber); //creates server socket with the port number specified
             System.out.println("Server started!");
+            json.clearProducts();
             while (true) {
                 clientSocket = serverSocket.accept(); //accepts client conntection from server socket
                 System.out.println("Accepted connection from: " + clientSocket.getInetAddress().getHostAddress()); //prints ip of the client which connected

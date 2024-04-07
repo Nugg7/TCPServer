@@ -37,4 +37,28 @@ public class JSONManagerServer {
         JSONObject json = (JSONObject) jsonParser.parse(s);
         return json;
     }
+
+    public void putProducts(JSONObject prod){
+        JSONArray products = (JSONArray) doc.get("products");
+        products.add(prod);
+        write();
+    }
+
+    private void write(){
+        try (FileWriter file = new FileWriter("Products.json")) {
+            //We can write any JSONArray or JSONObject instance to the file
+            file.write(doc.toJSONString());
+            file.flush();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void clearProducts(){
+        JSONArray products = (JSONArray) doc.get("products");
+        products.clear();
+        write();
+    }
 }
