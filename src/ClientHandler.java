@@ -30,6 +30,8 @@ public class ClientHandler implements Runnable {
     public static String leftMessageConv;
 
     static double highestBid = 0;
+    static String highestBidder = "";
+    static UUID highestBidderUUID = null;
 
     public ClientHandler(Socket clientSocket) {
         this.clientSocket = clientSocket;
@@ -77,6 +79,8 @@ public class ClientHandler implements Runnable {
                         double bid = Double.parseDouble(message.get("message").toString());
                         String JSONMessage = setResponse("BID", msg + "$");
                         setHighestBid(bid);
+                        setHighestBidderProfile(UUID.fromString(message.get("UUID").toString()));
+                        debug();
                         broadcastMessage(JSONMessage); //broadcasts the bid of the client to all the other clients
                         System.out.println(JSONMessage); //prints out the bid of the client
                         responseClear(response);
@@ -102,7 +106,8 @@ public class ClientHandler implements Runnable {
                     }
                 }
             }
-            setLeftMessage(this.clientUsername);
+            ClientHandler clientLeft = getUser(this.clientUuid);
+            setLeftMessage(clientLeft.getClientUsername());
             System.out.println(leftMessageConv); //prints out when client exits
             try {
                 if (clientSocket.isConnected()) {
@@ -153,11 +158,38 @@ public class ClientHandler implements Runnable {
         }
     }
 
+    public String getClientUsername(){
+        return clientUsername;
+    }
+
+    public UUID getClientUuid(){
+        return clientUuid;
+    }
+
+    public ClientHandler getUser(UUID uuid){
+        for(ClientHandler client : clients){
+            if (client.clientUuid.equals(uuid)){
+                return client;
+            }
+        }
+        return null;
+    }
+
     public synchronized void setHighestBid(double bid){
         if (bid > highestBid){
             highestBid = bid;
             sendhighestBid(highestBid);
         }
+    }
+
+    public synchronized void setHighestBidderProfile(UUID uuid){
+        ClientHandler client = getUser(uuid);
+        highestBidder = client.getClientUsername();
+        highestBidderUUID = client.getClientUuid();
+    }
+
+    public void debug(){
+        System.out.println("highestBid: " + highestBid + " highestBidder: " + highestBidder + " highestBidderUUID: " + highestBidderUUID);
     }
 
     public synchronized void sendhighestBid(double bid){
