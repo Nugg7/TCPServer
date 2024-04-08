@@ -61,4 +61,9 @@ public class JSONManagerServer {
         products.clear();
         write();
     }
+
+    public JSONArray getProducts(){
+        JSONArray products = (JSONArray) doc.get("products");
+        return products;
+    }
 }
