@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d27aac8c-e78b-4585-a331-3b81777cad94" name="Changes" comment="added methods to send and save the highest bid of client">
+    <list default="true" id="d27aac8c-e78b-4585-a331-3b81777cad94" name="Changes" comment="added method to search user and to set the highest bidder and changed left message setting in readLoop">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Products.json" beforeDir="false" afterPath="$PROJECT_DIR$/Products.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/JSONManagerServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JSONManagerServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +169,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712600516747</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="added method to search user and to set the highest bidder and changed left message setting in readLoop">
+      <option name="closed" value="true" />
+      <created>1712601552364</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1712601552364</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,6 +204,7 @@
     <MESSAGE value="changed TODOs" />
     <MESSAGE value="added methods to close socket when ADMIN starts auction" />
     <MESSAGE value="added methods to send and save the highest bid of client" />
-    <option name="LAST_COMMIT_MESSAGE" value="added methods to send and save the highest bid of client" />
+    <MESSAGE value="added method to search user and to set the highest bidder and changed left message setting in readLoop" />
+    <option name="LAST_COMMIT_MESSAGE" value="added method to search user and to set the highest bidder and changed left message setting in readLoop" />
   </component>
 </project>

@@ -33,6 +33,10 @@ public class ClientHandler implements Runnable {
     static String highestBidder = "";
     static UUID highestBidderUUID = null;
 
+    static JSONArray products = new JSONArray();
+
+    static int numberOfProducts = 0;
+
     public ClientHandler(Socket clientSocket) {
         this.clientSocket = clientSocket;
         String profileToParse;
@@ -92,10 +96,18 @@ public class ClientHandler implements Runnable {
                             product.put("HighestBidderUUID", "");
                             product.put("Bid", 0);
                             json.putProducts(product);
+                            numberOfProducts++;
                             responseClear(response);
                         }
                         else if (message.get("username").equals("ADMIN") && message.get("message").equals("/START")) {
                             Server.refuseConnection();
+                        }
+                        else if (message.get("username").equals("AUCTION") && message.get("message").equals("/FIRST PRODUCT")) {
+                            setProducts();
+                            for(Object p : products){
+                                System.out.println(p.toString());
+                            }
+                            System.out.println(numberOfProducts);
                         }
                         else{
                             String JSONMessage = setResponse("MESSAGE", msg);
@@ -190,6 +202,10 @@ public class ClientHandler implements Runnable {
 
     public void debug(){
         System.out.println("highestBid: " + highestBid + " highestBidder: " + highestBidder + " highestBidderUUID: " + highestBidderUUID);
+    }
+
+    public void setProducts(){
+        products = json.getProducts();
     }
 
     public synchronized void sendhighestBid(double bid){
