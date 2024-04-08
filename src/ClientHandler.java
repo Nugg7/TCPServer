@@ -88,10 +88,10 @@ public class ClientHandler implements Runnable {
                             responseClear(response);
                         }
                         else{
-                        String JSONMessage = setResponse("MESSAGE", msg);
-                        broadcastMessage(JSONMessage); //broadcasts the message of the client to all the other clients
-                        System.out.println(JSONMessage); //prints out the message of the client
-                        responseClear(response);
+                            String JSONMessage = setResponse("MESSAGE", msg);
+                            broadcastMessage(JSONMessage); //broadcasts the message of the client to all the other clients
+                            System.out.println(JSONMessage); //prints out the message of the client
+                            responseClear(response);
                         }
                     }
                 } else if (message.get("message").equals("/START")) {
@@ -126,10 +126,10 @@ public class ClientHandler implements Runnable {
         leftMessage.put("MESSAGE", "SERVER : " + userName + " LEFT");
         leftMessageConv = leftMessage.toString();
     }
-    
+
     public void responseClear(JSONObject response){
         response.remove("CODE");
-            response.remove("MESSAGE");
+        response.remove("MESSAGE");
     }
 
     public String setResponse(String CODE,String MESSAGE){
@@ -140,12 +140,12 @@ public class ClientHandler implements Runnable {
 
     public void broadcastMessage(String message) {
         for(ClientHandler client : clients){
-                try {
-                    client.writer.write(message);
-                    client.writer.newLine();
-                    client.writer.flush();
-                } catch (IOException e) {
-                }
+            try {
+                client.writer.write(message);
+                client.writer.newLine();
+                client.writer.flush();
+            } catch (IOException e) {
+            }
         }
     }
 
