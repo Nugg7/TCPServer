@@ -156,11 +156,12 @@ public class ClientHandler implements Runnable {
                             String end = "";
                             for(Object p : products){
                                 JSONObject prod = (JSONObject) p;
-                                end += "\nProduct: " + prod.get("name") + "\nWinner: " + prod.get("HighestBidder") + "\nfor: " + prod.get("Bid") + "\n";
+                                end = "Product: " + prod.get("name") + "\nWinner: " + prod.get("HighestBidder") + "\nfor: " + prod.get("Bid");
+                                System.out.println(end);
+                                endingMessage.put("MESSAGE", end);
+                                broadcastMessage(endingMessage.toString());
+                                endingMessage.remove("MESSAGE");
                             }
-                            System.out.println(end);
-                            endingMessage.put("MESSAGE", end);
-                            broadcastMessage(endingMessage.toString());
 
                             JSONObject endAuction = new JSONObject();
                             endAuction.put("CODE", "AUCTION");
