@@ -29,6 +29,8 @@ public class ClientHandler implements Runnable {
 
     public static String leftMessageConv;
 
+    static double highestBid = 0;
+
     public ClientHandler(Socket clientSocket) {
         this.clientSocket = clientSocket;
         String profileToParse;
@@ -74,6 +76,7 @@ public class ClientHandler implements Runnable {
                     try {
                         double bid = Double.parseDouble(message.get("message").toString());
                         String JSONMessage = setResponse("BID", msg + "$");
+                        setHighestBid(bid);
                         broadcastMessage(JSONMessage); //broadcasts the bid of the client to all the other clients
                         System.out.println(JSONMessage); //prints out the bid of the client
                         responseClear(response);
@@ -87,6 +90,9 @@ public class ClientHandler implements Runnable {
                             json.putProducts(product);
                             responseClear(response);
                         }
+                        else if (message.get("username").equals("ADMIN") && message.get("message").equals("/START")) {
+                            Server.refuseConnection();
+                        }
                         else{
                             String JSONMessage = setResponse("MESSAGE", msg);
                             broadcastMessage(JSONMessage); //broadcasts the message of the client to all the other clients
@@ -94,8 +100,6 @@ public class ClientHandler implements Runnable {
                             responseClear(response);
                         }
                     }
-                } else if (message.get("message").equals("/START")) {
-                    Server.refuseConnection();
                 }
             }
             setLeftMessage(this.clientUsername);
@@ -147,6 +151,20 @@ public class ClientHandler implements Runnable {
             } catch (IOException e) {
             }
         }
+    }
+
+    public synchronized void setHighestBid(double bid){
+        if (bid > highestBid){
+            highestBid = bid;
+            sendhighestBid(highestBid);
+        }
+    }
+
+    public synchronized void sendhighestBid(double bid){
+        JSONObject message = new JSONObject();
+        message.put("CODE", "PRODUCT");
+        message.put("MESSAGE", bid);
+        broadcastMessage(message.toString());
     }
 
     @Override
