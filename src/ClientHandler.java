@@ -36,7 +36,7 @@ public class ClientHandler implements Runnable {
     static JSONArray products = new JSONArray();
     static int currentProductIndex = 0;
     static JSONObject currentProduct = new JSONObject();
-    static int numberOfProducts = 0;
+    static int numberOfProducts = 1;
 
     public ClientHandler(Socket clientSocket) {
         this.clientSocket = clientSocket;
@@ -83,7 +83,7 @@ public class ClientHandler implements Runnable {
                     try {
                         double bid = Double.parseDouble(message.get("message").toString());
                         String JSONMessage = setResponse("BID", msg + "$");
-                        if (currentProductIndex < numberOfProducts-1) {
+                        if (currentProductIndex < numberOfProducts) {
                             setHighestBid(bid);
                             setHighestBidderProfile(UUID.fromString(message.get("UUID").toString()));
                         }
@@ -124,7 +124,7 @@ public class ClientHandler implements Runnable {
                             highestBid = 0;
                             highestBidder = "";
                             highestBidderUUID = null;
-                            if (currentProductIndex < numberOfProducts-1) {
+                            if (currentProductIndex < numberOfProducts) {
                                 sendResetBid();
                                 for(Object p : products){ // debug
                                     System.out.println(p.toString());
@@ -136,21 +136,40 @@ public class ClientHandler implements Runnable {
                                 nextProduct.put("MESSAGE", currentProduct.get("name"));
                                 broadcastMessage(nextProduct.toString());
                             }
-                            else {
-                                JSONObject endingMessage = new JSONObject();
-                                endingMessage.put("CODE", "MESSAGE");
-                                String end = "";
-                                for(Object p : products){
-                                    JSONObject prod = (JSONObject) p;
-                                    end += "\nProduct: " + prod.get("name") + "\nWinner: " + prod.get("HighestBidder") + "\nfor: " + prod.get("Bid") + "\n";
-                                }
-                                endingMessage.put("MESSAGE", end);
-                                broadcastMessage(endingMessage.toString());
 
-                                JSONObject endAuction = new JSONObject();
-                                endAuction.put("CODE", "AUCTION");
-                                endAuction.put("MESSAGE", "Ended");
-                                broadcastMessage(endAuction.toString());
+                        }
+                        else if (message.get("username").equals("AUCTION") && message.get("message").equals("/END")){
+                            currentProduct.remove("HighestBidder");
+                            currentProduct.remove("HighestBidderUUID");
+                            currentProduct.remove("Bid");
+                            currentProduct.put("HighestBidder", highestBidder);
+                            currentProduct.put("HighestBidderUUID", highestBidderUUID);
+                            currentProduct.put("Bid", highestBid);
+                            highestBid = 0;
+                            highestBidder = "";
+                            highestBidderUUID = null;
+                            sendResetBid();
+                            JSONObject endingMessage = new JSONObject();
+                            endingMessage.put("CODE", "MESSAGE");
+                            endingMessage.put("MESSAGE", "Auction Ended");
+                            broadcastMessage(endingMessage.toString());
+                            String end = "";
+                            for(Object p : products){
+                                JSONObject prod = (JSONObject) p;
+                                end += "\nProduct: " + prod.get("name") + "\nWinner: " + prod.get("HighestBidder") + "\nfor: " + prod.get("Bid") + "\n";
+                            }
+                            System.out.println(end);
+                            endingMessage.put("MESSAGE", end);
+                            broadcastMessage(endingMessage.toString());
+
+                            JSONObject endAuction = new JSONObject();
+                            endAuction.put("CODE", "AUCTION");
+                            endAuction.put("MESSAGE", "Ended");
+                            broadcastMessage(endAuction.toString());
+
+                            for(Object p : products){
+                                JSONObject prod = (JSONObject) p;
+                                json.putProducts(prod);
                             }
                         }
                         else{
