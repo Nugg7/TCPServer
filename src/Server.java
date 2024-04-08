@@ -23,7 +23,7 @@ public class Server {
                 System.out.println("Server started!");
                 json.clearProducts();
                 while (true) {
-                    clientSocket = serverSocket.accept(); //accepts client conntection from server socket
+                    clientSocket = serverSocket.accept(); //accepts client connection from server socket
                     if (!acceptConnections) {
                         clientSocket.close();
                     }
