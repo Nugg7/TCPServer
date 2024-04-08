@@ -102,9 +102,6 @@ public class ClientHandler implements Runnable {
                             numberOfProducts++;
                             responseClear(response);
                         }
-                        else if (message.get("username").equals("ADMIN") && message.get("message").equals("/START")) {
-                            Server.refuseConnection();
-                        }
                         else if (message.get("username").equals("AUCTION") && message.get("message").equals("/FIRST PRODUCT")) {
                             setProducts();
                             for(Object p : products){ // debug
@@ -163,6 +160,9 @@ public class ClientHandler implements Runnable {
                             responseClear(response);
                         }
                     }
+                }
+                else if (message.get("username").equals("ADMIN") && message.get("message").equals("/START")) {
+                    Server.refuseConnection();
                 }
             }
             ClientHandler clientLeft = getUser(this.clientUuid);
@@ -274,7 +274,7 @@ public class ClientHandler implements Runnable {
         try { //code to execute when client connects
             readLoop(writer, reader);
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("ERROR: Auction started");
         } finally {
             try {
                 if (clientSocket != null)
