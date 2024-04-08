@@ -34,7 +34,8 @@ public class ClientHandler implements Runnable {
     static UUID highestBidderUUID = null;
 
     static JSONArray products = new JSONArray();
-
+    static int currentProductIndex = 0;
+    static JSONObject currentProduct = new JSONObject();
     static int numberOfProducts = 0;
 
     public ClientHandler(Socket clientSocket) {
@@ -82,8 +83,10 @@ public class ClientHandler implements Runnable {
                     try {
                         double bid = Double.parseDouble(message.get("message").toString());
                         String JSONMessage = setResponse("BID", msg + "$");
-                        setHighestBid(bid);
-                        setHighestBidderProfile(UUID.fromString(message.get("UUID").toString()));
+                        if (currentProductIndex < numberOfProducts-1) {
+                            setHighestBid(bid);
+                            setHighestBidderProfile(UUID.fromString(message.get("UUID").toString()));
+                        }
                         debug();
                         broadcastMessage(JSONMessage); //broadcasts the bid of the client to all the other clients
                         System.out.println(JSONMessage); //prints out the bid of the client
@@ -104,10 +107,54 @@ public class ClientHandler implements Runnable {
                         }
                         else if (message.get("username").equals("AUCTION") && message.get("message").equals("/FIRST PRODUCT")) {
                             setProducts();
-                            for(Object p : products){
+                            for(Object p : products){ // debug
                                 System.out.println(p.toString());
                             }
-                            System.out.println(numberOfProducts);
+                            System.out.println(numberOfProducts); // debug
+                            currentProduct = (JSONObject) products.get(currentProductIndex);
+                            JSONObject firstProduct = new JSONObject();
+                            firstProduct.put("CODE", "AUCTION");
+                            firstProduct.put("MESSAGE", currentProduct.get("name"));
+                            broadcastMessage(firstProduct.toString());
+                        }
+                        else if (message.get("username").equals("AUCTION") && message.get("message").equals("/NEXT PRODUCT")) {
+                            currentProduct.remove("HighestBidder");
+                            currentProduct.remove("HighestBidderUUID");
+                            currentProduct.remove("Bid");
+                            currentProduct.put("HighestBidder", highestBidder);
+                            currentProduct.put("HighestBidderUUID", highestBidderUUID);
+                            currentProduct.put("Bid", highestBid);
+                            highestBid = 0;
+                            highestBidder = "";
+                            highestBidderUUID = null;
+                            if (currentProductIndex < numberOfProducts-1) {
+                                sendResetBid();
+                                for(Object p : products){ // debug
+                                    System.out.println(p.toString());
+                                }
+                                currentProductIndex++;
+                                currentProduct = (JSONObject) products.get(currentProductIndex);
+                                JSONObject nextProduct = new JSONObject();
+                                nextProduct.put("CODE", "AUCTION");
+                                nextProduct.put("MESSAGE", currentProduct.get("name"));
+                                broadcastMessage(nextProduct.toString());
+                            }
+                            else {
+                                JSONObject endingMessage = new JSONObject();
+                                endingMessage.put("CODE", "MESSAGE");
+                                String end = "";
+                                for(Object p : products){
+                                    JSONObject prod = (JSONObject) p;
+                                    end += "\nProduct: " + prod.get("name") + "\nWinner: " + prod.get("HighestBidder") + "\nfor: " + prod.get("Bid") + "\n";
+                                }
+                                endingMessage.put("MESSAGE", end);
+                                broadcastMessage(endingMessage.toString());
+
+                                JSONObject endAuction = new JSONObject();
+                                endAuction.put("CODE", "AUCTION");
+                                endAuction.put("MESSAGE", "Ended");
+                                broadcastMessage(endAuction.toString());
+                            }
                         }
                         else{
                             String JSONMessage = setResponse("MESSAGE", msg);
@@ -202,6 +249,13 @@ public class ClientHandler implements Runnable {
 
     public void debug(){
         System.out.println("highestBid: " + highestBid + " highestBidder: " + highestBidder + " highestBidderUUID: " + highestBidderUUID);
+    }
+
+    public void sendResetBid(){
+        JSONObject message = new JSONObject();
+        message.put("CODE", "RESET");
+        message.put("MESSAGE", 0);
+        broadcastMessage(message.toString());
     }
 
     public void setProducts(){

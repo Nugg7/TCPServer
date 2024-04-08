@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d27aac8c-e78b-4585-a331-3b81777cad94" name="Changes" comment="added method to search user and to set the highest bidder and changed left message setting in readLoop">
+    <list default="true" id="d27aac8c-e78b-4585-a331-3b81777cad94" name="Changes" comment="added methods to save products sent by admin as static variable and a counter to see how many products were sent">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Products.json" beforeDir="false" afterPath="$PROJECT_DIR$/Products.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JSONManagerServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JSONManagerServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +177,23 @@
       <option name="project" value="LOCAL" />
       <updated>1712601552364</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="added method to set products">
+      <option name="closed" value="true" />
+      <created>1712603599537</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1712603599537</updated>
+    </task>
+    <task id="LOCAL-00012" summary="added methods to save products sent by admin as static variable and a counter to see how many products were sent">
+      <option name="closed" value="true" />
+      <created>1712603661000</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1712603661000</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,6 +221,8 @@
     <MESSAGE value="added methods to close socket when ADMIN starts auction" />
     <MESSAGE value="added methods to send and save the highest bid of client" />
     <MESSAGE value="added method to search user and to set the highest bidder and changed left message setting in readLoop" />
-    <option name="LAST_COMMIT_MESSAGE" value="added method to search user and to set the highest bidder and changed left message setting in readLoop" />
+    <MESSAGE value="added method to set products" />
+    <MESSAGE value="added methods to save products sent by admin as static variable and a counter to see how many products were sent" />
+    <option name="LAST_COMMIT_MESSAGE" value="added methods to save products sent by admin as static variable and a counter to see how many products were sent" />
   </component>
 </project>
