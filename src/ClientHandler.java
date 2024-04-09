@@ -125,7 +125,6 @@ public class ClientHandler implements Runnable {
                             catch (Exception n){
                                 currentProduct.put("HighestBidderUUID", "0");
                             }
-                            //currentProduct.put("HighestBidderUUID", highestBidderUUID.toString());
                             currentProduct.put("Bid", highestBid);
                             highestBid = 0;
                             highestBidder = "";
@@ -155,7 +154,6 @@ public class ClientHandler implements Runnable {
                             catch (Exception n){
                                 currentProduct.put("HighestBidderUUID", "0");
                             }
-                            //currentProduct.put("HighestBidderUUID", highestBidderUUID.toString());
                             currentProduct.put("Bid", highestBid);
                             highestBid = 0;
                             highestBidder = "";
