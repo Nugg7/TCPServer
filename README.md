@@ -1,8 +1,8 @@
 # Auction
 This program is only part of the Auction project and it consists of the Server side which contains the multi-threaded server that runs the Auction and where clients connect.
 *[CLIENT](https://github.com/Nugg7/TCPClient.git) - to get Client side.*
-# Dependencies
-- JSON-simple ver. 1.1.1
+# Dependencies (from maven)
+- JSON-simple ver. 1.1.1 (`com.googlecode.json-simple:json-simple:1.1.1`)
 # Requirements
 - JDK 8+
 - IDE to run program (like Intellij)
