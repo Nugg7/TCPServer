@@ -83,7 +83,7 @@ public class ClientHandler implements Runnable {
                     try {
                         double bid = Double.parseDouble(message.get("message").toString());
                         String JSONMessage = setResponse("BID", msg + "$");
-                        if (currentProductIndex < numberOfProducts) {
+                        if (currentProductIndex < numberOfProducts && numberOfProducts != 1) {
                             setHighestBid(bid);
                             setHighestBidderProfile(UUID.fromString(message.get("UUID").toString()));
                         }
