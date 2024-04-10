@@ -1,4 +1,4 @@
-# Auction
+# Auction from: Steven Guevarra
 This program is only part of the Auction project and it consists of the Server side which contains the multi-threaded server that runs the Auction and where clients connect.
 *[CLIENT](https://github.com/Nugg7/TCPClient.git) - to get Client side.*
 # Dependencies (from maven)
