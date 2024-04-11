@@ -6,13 +6,11 @@ This program is only part of the Auction project and it consists of the Server s
 # Requirements
 - JDK 22
 # Installation
-## Linux/Mac/Windows (git bash)
+## Linux/Mac/Windows
+install the release or
 ```java
 git clone https://github.com/Nugg7/TCPServer.git
 ```
-## Windows (without git bash)
-- Download the zip
-- extract
 # Usage
 After cloning the repo, just double click on the jar file
 or if that doesn't work open terminal or cmd in folder and use:
