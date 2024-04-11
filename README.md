@@ -4,7 +4,7 @@ This program is only part of the Auction project and it consists of the Server s
 # Dependencies (from maven)
 - JSON-simple ver. 1.1.1 (`com.googlecode.json-simple:json-simple:1.1.1`)
 # Requirements
-- JDK 21+
+- JDK 22
 # Installation
 ## Linux/Mac/Windows (git bash)
 ```java
